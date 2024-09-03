@@ -1,0 +1,916 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OWASP Top 10:2021">
+      
+      
+      
+      
+        <link rel="prev" href="../A05_2021-Security_Misconfiguration/">
+      
+      
+        <link rel="next" href="../A07_2021-Identification_and_Authentication_Failures/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>A06 Komponen yang Rentan dan Kedaluwarsa - OWASP Top 10:2021</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a062021-komponen-yang-rentan-dan-kedaluwarsa" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="OWASP Top 10:2021" class="md-header__button md-logo" aria-label="OWASP Top 10:2021" data-md-component="logo">
+      
+  <img src="../../assets/OWASP_Logo_Transp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OWASP Top 10:2021
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              A06 Komponen yang Rentan dan Kedaluwarsa
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/OWASP/Top10" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OWASP/Top10
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="OWASP Top 10:2021" class="md-nav__button md-logo" aria-label="OWASP Top 10:2021" data-md-component="logo">
+      
+  <img src="../../assets/OWASP_Logo_Transp.png" alt="logo">
+
+    </a>
+    OWASP Top 10:2021
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/OWASP/Top10" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OWASP/Top10
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Beranda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x00-notice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pemberitahuan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pengenalan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021_How_to_use_the_OWASP_Top_10_as_a_standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bagaimana cara menggunakan OWASP Top 10 sebagai sebuah standarisasi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021-How_to_start_an_AppSec_program_with_the_OWASP_Top_10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bagaimana cara untuk memulai program AppSec dengan OWASP Top 10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00-about-owasp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tentang OWASP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Daftar Top 10:2021
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Daftar Top 10:2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A01_2021-Broken_Access_Control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A01 Kerusakan Akses Kontrol
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A02_2021-Cryptographic_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A02 Kegagalan Kriptografi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A03_2021-Injection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A03 Injeksi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A04_2021-Insecure_Design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A04 Insecure Design
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A05_2021-Security_Misconfiguration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A05 Kesalahan Konfigurasi Keamanan
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    A06 Komponen yang Rentan dan Kedaluwarsa
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    A06 Komponen yang Rentan dan Kedaluwarsa
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#faktor-faktor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Faktor-Faktor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ikhtisar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ikhtisar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deskripsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deskripsi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cara-mencegah" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cara Mencegah
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contoh-skenario-serangan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contoh Skenario Serangan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referensi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-klasifikasi-cwe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daftar Klasifikasi CWE
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A07_2021-Identification_and_Authentication_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A07 Kegagalan Identifikasi dan Otentikasi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A08_2021-Software_and_Data_Integrity_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A08 Kegagalan Integritas Data dan Perangkat Lunak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A09_2021-Security_Logging_and_Monitoring_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A09 Kegagalan dalam Keamanan Logging dan Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A10_2021-Server-Side_Request_Forgery_%28SSRF%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A10 Server-Side Request Forgery (SSRF)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A11_2021-Next_Steps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Langkah Selanjutnya
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#faktor-faktor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Faktor-Faktor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ikhtisar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ikhtisar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deskripsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deskripsi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cara-mencegah" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cara Mencegah
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contoh-skenario-serangan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contoh Skenario Serangan
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referensi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daftar-klasifikasi-cwe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daftar Klasifikasi CWE
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="a062021-komponen-yang-rentan-dan-kedaluwarsa">A06:2021 – Komponen yang Rentan dan Kedaluwarsa</h1>
+<h2 id="faktor-faktor">Faktor-Faktor</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Klasifikasi CWE</th>
+<th style="text-align: center;">Tingkat Kejadian Maksimum</th>
+<th style="text-align: center;">Rata-rata Tingkat kejadian</th>
+<th style="text-align: center;">Cakupan Maksimum</th>
+<th style="text-align: center;">Rata-rata Cakupan</th>
+<th style="text-align: center;">Rata-rata Bobot Eksploitasi</th>
+<th style="text-align: center;">Rata-rata Bobot Dampak</th>
+<th style="text-align: center;">Total Kejadian</th>
+<th style="text-align: center;">Total CVEs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">27.96%</td>
+<td style="text-align: center;">8.77%</td>
+<td style="text-align: center;">51.78%</td>
+<td style="text-align: center;">22.47%</td>
+<td style="text-align: center;">5.00</td>
+<td style="text-align: center;">5.00</td>
+<td style="text-align: center;">30,457</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ikhtisar">Ikhtisar</h2>
+<p>Sebelumnya #2 dari survei komunitas Top 10 tetapi juga memiliki data yang cukup untuk membuat Top 10 melalui data. Komponen yang rentan adalah masalah umum yang kami 'struggle' untuk menguji dan menilai risiko dan merupakan satu-satunya kategori yang tidak memiliki CWE yang dipetakan ke CWE yang disertakan, jadi bobot baku eksploitasi/dampak 5.0 digunakan. CWE terkenal yang disertakan adalah <em>CWE-1104: Penggunaan Komponen Pihak Ketiga yang Tidak Dikelola</em> dan dua CWE dari Top 10 2013 dan 2017.</p>
+<h2 id="deskripsi">Deskripsi</h2>
+<p>Anda kemungkinan besar rentan:</p>
+<ul>
+<li>Jika Anda tidak mengetahui versi semua komponen yang Anda gunakan (sisi klien dan sisi server). Ini termasuk komponen yang secara langsung Anda gunakan serta dependensi bersarang.</li>
+<li>Jika perangkat lunak rentan, tidak didukung, atau ketinggalan zaman. Ini termasuk OS, server web/aplikasi, sistem manajemen basis data (DBMS), aplikasi, API dan semua komponen, lingkungan runtime, dan pustaka.</li>
+<li>Jika Anda tidak memindai kerentanan secara teratur dan berlangganan buletin keamanan yang terkait dengan komponen yang Anda gunakan.</li>
+<li>Jika Anda tidak memperbaiki atau meningkatkan platform, kerangka kerja, dan dependensi yang mendasarinya secara tepat waktu dan berbasis risiko. Ini biasanya terjadi di lingkungan ketika patch adalah tugas bulanan atau triwulanan dibawah kendali perubahan, membiarkan organisasi terbuka selama berhari-hari atau berbulan-bulan terpapar secara tidak perlu atas kerentanan-kerentangan yang telah diperbaiki.</li>
+<li>Jika pengembang perangkat lunak tidak menguji kompatibilitas pustaka-pustaka yang diperbarui, ditingkatkan, atau di-patch.</li>
+<li>Jika Anda tidak mengamankan konfigurasi komponen (lihat A05:2021-Security Misconfiguration).</li>
+</ul>
+<h2 id="cara-mencegah">Cara Mencegah</h2>
+<p>Harus ada proses manajemen patch untuk: </p>
+<ul>
+<li>Menghapus dependensi, fitur, komponen, file, dan dokumentasi yang tidak digunakan.</li>
+<li>Inventarisasi versi komponen sisi klien dan sisi server secara terus menerus (mis., kerangka kerja, pustaka) dan dependensinya menggunakan alat seperti versi, OWASP Dependency Check, retire.js, dll. Memantau secara terus menerus sumber-sumber seperti Common Vulnerability and Exposures (CVE) dan National Vulnerability Database (NVD) untuk  kerentanan dalam komponen. Gunakan alat analisis komposisi perangkat lunak untuk mengotomatisasi proses. Berlangganan email peringatan untuk kerentanan keamanan yang terkait dengan komponen yang Anda gunakan.</li>
+<li>Hanya dapatkan komponen dari sumber resmi melalui tautan yang aman. Pilih paket yang ditandatangani untuk mengurangi kemungkinan menyertakan komponen berbahaya yang dimodifikasi (Lihat A08:2021-Software and Data Integrity Failures).</li>
+<li>Memantau pustaka dan komponen yang tidak dirawat atau tidak membuat patch keamanan untuk versi yang lebih lama. Jika tambalan tidak memungkinkan, pertimbangkan untuk menggunakan tambalan virtual untuk memantau, mendeteksi, atau melindungi dari masalah yang ditemukan.</li>
+</ul>
+<p>Setiap organisasi harus memastikan rencana berkelanjutan untuk memantau, melakukan triase, dan menerapkan pembaruan atau perubahan konfigurasi selama masa pakai aplikasi atau portofolio.</p>
+<h2 id="contoh-skenario-serangan">Contoh Skenario Serangan</h2>
+<p><strong>Skenario #1:</strong> Komponen biasanya berjalan dengan hak istimewa yang sama seperti aplikasi itu sendiri, sehingga cacat pada komponen apa pun dapat mengakibatkan dampak yang serius. Jadi cacat tersebut dapat terjadi secara tidak sengaja (mis., kesalahan pengkodean) atau disengaja (mis., pintu belakang dalam suatu komponen). Beberapa contoh kerentanan komponen yang dapat dieksploitasi yang ditemukan adalah:</p>
+<ul>
+<li>CVE-2017-5638, kerentanan eksekusi kode jarak jauh Struts 2 yang memungkinkan eksekusi kode sembarang di server, telah disalahkan atas pembobolan-pembobolan yang signifikan.</li>
+<li>Sementara internet of things (IoT) seringkali sangat sulit untuk ditambal, pentingnya menambal bisa sangat besar (mis., perangkat biomedis).</li>
+</ul>
+<p>Ada alat otomatis untuk membantu penyerang menemukan sesuatu yang belum ditambal atau sistem yang salah konfigurasi. Misalnya, mesin pencari Shodan IoT dapat membantu Anda menemukan perangkat yang masih mengalami kerentanan Heartbleed yang ditambal pada April 2014.</p>
+<h2 id="referensi">Referensi</h2>
+<ul>
+<li>OWASP Application Security Verification Standard: V1 Architecture, design and threat modelling</li>
+<li>OWASP Dependency Check (for Java and .NET libraries)</li>
+<li>OWASP Testing Guide - Map Application Architecture (OTG-INFO-010)</li>
+<li>OWASP Virtual Patching Best Practices</li>
+<li>The Unfortunate Reality of Insecure Libraries</li>
+<li>MITRE Common Vulnerabilities and Exposures (CVE) search</li>
+<li>National Vulnerability Database (NVD)</li>
+<li>Retire.js for detecting known vulnerable JavaScript libraries</li>
+<li>Node Libraries Security Advisories</li>
+<li>[Ruby Libraries Security Advisory Database and Tools]</li>
+<li>https://safecode.org/publication/SAFECode_Software_Integrity_Controls0610.pdf</li>
+</ul>
+<h2 id="daftar-klasifikasi-cwe">Daftar Klasifikasi CWE</h2>
+<p>CWE-937 OWASP Top 10 2013: Using Components with Known Vulnerabilities</p>
+<p>CWE-1035 2017 Top 10 A9: Using Components with Known Vulnerabilities</p>
+<p>CWE-1104 Use of Unmaintained Third Party Components</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Copyright 2021 - OWASP Top 10 team - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

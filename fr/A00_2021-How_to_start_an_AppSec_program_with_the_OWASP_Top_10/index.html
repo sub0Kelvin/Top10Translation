@@ -1,0 +1,862 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OWASP Top 10:2021">
+      
+      
+      
+      
+        <link rel="prev" href="../A00_2021_How_to_use_the_OWASP_Top_10_as_a_standard/">
+      
+      
+        <link rel="next" href="../A00-about-owasp/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Comment démarrer un programme SecApp avec l'OWASP Top 10 - OWASP Top 10:2021</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#comment-demarrer-un-programme-de-securite-des-applications-secapp-avec-lowasp-top-10" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="OWASP Top 10:2021" class="md-header__button md-logo" aria-label="OWASP Top 10:2021" data-md-component="logo">
+      
+  <img src="../../assets/OWASP_Logo_Transp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OWASP Top 10:2021
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Comment démarrer un programme SecApp avec l'OWASP Top 10
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/OWASP/Top10" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OWASP/Top10
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="OWASP Top 10:2021" class="md-nav__button md-logo" aria-label="OWASP Top 10:2021" data-md-component="logo">
+      
+  <img src="../../assets/OWASP_Logo_Transp.png" alt="logo">
+
+    </a>
+    OWASP Top 10:2021
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/OWASP/Top10" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OWASP/Top10
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Page d'accueil
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x00-notice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Note
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021_How_to_use_the_OWASP_Top_10_as_a_standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comment utiliser le Top 10 OWASP comme standard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Comment démarrer un programme SecApp avec l'OWASP Top 10
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Comment démarrer un programme SecApp avec l'OWASP Top 10
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#etape-1-identifiez-les-lacunes-et-les-objectifs-de-votre-programme-de-securite-des-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 1. Identifiez les lacunes et les objectifs de votre programme de sécurité des applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-2-planifier-un-cycle-de-vie-de-developpement-securise-pour-une-voie-pavee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 2. Planifier un cycle de vie de développement sécurisé pour une voie pavée
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-3-mettez-en-place-la-voie-pavee-avec-vos-equipes-de-developpement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 3. Mettez en place la voie pavée avec vos équipes de développement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-4-migrer-toutes-les-applications-a-venir-et-existantes-vers-la-voie-pavee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 4. Migrer toutes les applications à venir et existantes vers la voie pavée
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-5-tester-que-la-voie-pavee-a-attenue-les-problemes-signales-dans-le-top-10-de-lowasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 5. Tester que la voie pavée a atténué les problèmes signalés dans le Top 10 de l'OWASP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-6-transformez-votre-programme-en-un-programme-secapp-mature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 6. Transformez votre programme en un programme SecApp mature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aller-plus-loin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aller plus loin
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00-about-owasp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    À propos de l'OWASP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Liste top 10:2021
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Liste top 10:2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A01_2021-Broken_Access_Control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A01 Contrôles d'accès défaillants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A02_2021-Cryptographic_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A02 Défaillances cryptographiques
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A03_2021-Injection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A03 Injection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A04_2021-Insecure_Design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A04 Conception non sécurisée
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A05_2021-Security_Misconfiguration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A05 Mauvaise configuration de sécurité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A06_2021-Vulnerable_and_Outdated_Components/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A06 Composants vulnérables et obsolètes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A07_2021-Identification_and_Authentication_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A07 Identification et authentification de mauvaise qualité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A08_2021-Software_and_Data_Integrity_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A08 Manque d'intégrité des données et du logiciel
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A09_2021-Security_Logging_and_Monitoring_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A09 Carence des systèmes de contrôle et de journalisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A10_2021-Server-Side_Request_Forgery_%28SSRF%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A10 Falsification de requête côté serveur (SSRF)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A11_2021-Next_Steps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Étapes suivantes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#etape-1-identifiez-les-lacunes-et-les-objectifs-de-votre-programme-de-securite-des-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 1. Identifiez les lacunes et les objectifs de votre programme de sécurité des applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-2-planifier-un-cycle-de-vie-de-developpement-securise-pour-une-voie-pavee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 2. Planifier un cycle de vie de développement sécurisé pour une voie pavée
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-3-mettez-en-place-la-voie-pavee-avec-vos-equipes-de-developpement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 3. Mettez en place la voie pavée avec vos équipes de développement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-4-migrer-toutes-les-applications-a-venir-et-existantes-vers-la-voie-pavee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 4. Migrer toutes les applications à venir et existantes vers la voie pavée
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-5-tester-que-la-voie-pavee-a-attenue-les-problemes-signales-dans-le-top-10-de-lowasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 5. Tester que la voie pavée a atténué les problèmes signalés dans le Top 10 de l'OWASP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#etape-6-transformez-votre-programme-en-un-programme-secapp-mature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 6. Transformez votre programme en un programme SecApp mature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aller-plus-loin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aller plus loin
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="comment-demarrer-un-programme-de-securite-des-applications-secapp-avec-lowasp-top-10">Comment démarrer un programme de sécurité des applications (SecApp) avec l'OWASP Top 10</h1>
+<p>Auparavant, l'OWASP Top 10 n'avait jamais été conçu pour servir de base à un programme SecApp. Cependant, il est essentiel de commencer quelque part pour de nombreuses organisations qui commencent tout juste leur parcours en matière de sécurité des applications. Le Top 10 OWASP 2021 est un bon début en tant que référence pour les listes de contrôle, etc., mais il n'est pas suffisant en soi.</p>
+<h2 id="etape-1-identifiez-les-lacunes-et-les-objectifs-de-votre-programme-de-securite-des-applications">Étape 1. Identifiez les lacunes et les objectifs de votre programme de sécurité des applications</h2>
+<p>De nombreux programmes de sécurité des applications (SecApp) essaient de courir avant de savoir marcher. Ces efforts sont voués à l'échec. Nous encourageons fortement les RSSI et les dirigeants SecApp à utiliser l'<a href="https://owaspsamm.org">OWASP Software Assurance Maturity Model (SAMM)</a> pour identifier les faiblesses et les domaines à améliorer sur une période de 1 à 3 ans. La première étape consiste à évaluer où vous en êtes maintenant, à identifier les lacunes en matière de gouvernance, de conception, de mise en œuvre, de vérification et d'opérations que vous devez résoudre immédiatement par rapport à celles qui peuvent attendre, et de prioriser la mise en œuvre ou l'amélioration des quinze pratiques de sécurité OWASP SAMM. OWASP SAMM peut vous aider à créer et à mesurer des améliorations dans vos efforts d'assurance logicielle.</p>
+<h2 id="etape-2-planifier-un-cycle-de-vie-de-developpement-securise-pour-une-voie-pavee">Étape 2. Planifier un cycle de vie de développement sécurisé pour une voie pavée</h2>
+<p>Traditionnellement l'apanage des soi-disant "licornes", le concept de voie pavée est le moyen le plus simple d'avoir le plus d'impact et de faire évoluer les ressources SecApp avec la vélocité de l'équipe de développement, qui n'augmente que chaque année.</p>
+<p>Le concept de voie pavée est "le moyen le plus simple est aussi le moyen le plus sûr" et devrait impliquer une culture de partenariats profonds entre l'équipe de développement et l'équipe de sécurité, de préférence de telle sorte qu'ils forment une seule et même équipe. La voie pavée vise à améliorer, mesurer, détecter et remplacer en permanence les alternatives non sécurisées en disposant d'une bibliothèque de remplacements sécurisés à l'échelle de l'entreprise, avec des outils pour aider à voir où des améliorations peuvent être apportées en adoptant la voie pavée. Cela permet aux outils de développement existants de signaler les versions non sécurisées et d'aider les équipes de développement à se corriger elles-mêmes des alternatives non sécurisées.</p>
+<p>La voie pavée peut sembler beaucoup de choses à digérer, mais elle devrait être construite progressivement au fil du temps. Il existe d'autres formes de programmes SecApp, notamment le cycle de vie du développement de la sécurité de Microsoft. Toutes les méthodologies de programme SecApp ne conviennent pas à toutes les entreprises.</p>
+<h2 id="etape-3-mettez-en-place-la-voie-pavee-avec-vos-equipes-de-developpement">Étape 3. Mettez en place la voie pavée avec vos équipes de développement</h2>
+<p>Les voies pavées sont construites avec le consentement et la participation directe des équipes de développement et d'exploitation concernées. La voie pavée doit être alignée sur la stratégie de l'entreprise et aider à fournir plus rapidement des applications plus sécurisées. Développer la voie pavée devrait être un exercice holistique couvrant l'ensemble de l'entreprise ou de l'écosystème d'applications, et non un pansement par application, comme autrefois.</p>
+<h2 id="etape-4-migrer-toutes-les-applications-a-venir-et-existantes-vers-la-voie-pavee">Étape 4. Migrer toutes les applications à venir et existantes vers la voie pavée</h2>
+<p>Ajoutez des outils de détection à la voie pavée au fur et à mesure que vous les développez et fournissez des informations aux équipes de développement pour améliorer la sécurité de leurs applications en leur expliquant comment elles peuvent adopter directement des éléments de la voie pavée. Une fois qu'un aspect de la voie pavée a été adopté, les organisations doivent mettre en œuvre des contrôles d'intégration continue qui inspectent le code existant et les nouvelles contributions qui utilisent des alternatives interdites et avertissent ou rejettent la version ou la contribution. Cela empêche les options non sécurisées de s'infiltrer dans le code au fil du temps, évitant ainsi une dette technique et une application non sécurisée défectueuse. De tels avertissements doivent être liés à l'alternative sécurisée, afin que l'équipe de développement reçoive immédiatement la bonne réponse. Ils peuvent remanier et adopter rapidement le composant de la voie pavée.</p>
+<h2 id="etape-5-tester-que-la-voie-pavee-a-attenue-les-problemes-signales-dans-le-top-10-de-lowasp">Étape 5. Tester que la voie pavée a atténué les problèmes signalés dans le Top 10 de l'OWASP</h2>
+<p>Les composants de la voie pavée devraient résoudre un problème important signalé dans l'OWASP Top 10, par exemple, comment détecter ou réparer automatiquement les composants vulnérables, ou un plugin IDE d'analyse de code statique pour détecter les injections, ou encore mieux, commencer à utiliser une dépendance connue pour être sécurisée contre les injections. Plus ces remplacements sécurisés sont fournis aux équipes, mieux c'est. Une tâche vitale de l'équipe SecApp est de s'assurer que la sécurité de ces composants est continuellement évaluée et améliorée. Une fois qu'ils sont améliorés, une forme de voie de communication avec les consommateurs du composant doit indiquer qu'une mise à niveau doit se produire, de préférence automatiquement, mais sinon, au moins mise en évidence sur un tableau de bord ou similaire.</p>
+<h2 id="etape-6-transformez-votre-programme-en-un-programme-secapp-mature">Étape 6. Transformez votre programme en un programme SecApp mature</h2>
+<p>Il ne faut pas s'arrêter au Top 10 de l'OWASP. Il ne couvre que 10 catégories de risques. Nous encourageons fortement les organisations à adopter l'OWASP Application Security Verification Standard (ASVS) et à ajouter progressivement des composants et des tests de voies pavées pour les niveaux 1, 2 et 3, en fonction du niveau de risque des applications développées.</p>
+<h2 id="aller-plus-loin">Aller plus loin</h2>
+<p>Les meilleurs programmes SecApp vont au-delà du strict minimum. Tout le monde doit continuer les efforts si nous voulons un jour maîtriser les vulnérabilités.</p>
+<ul>
+<li><strong>Intégrité conceptuelle</strong>. Les programmes SecApp matures doivent contenir un certain concept d'architecture de sécurité, qu'il s'agisse d'une architecture formelle de sécurité cloud ou d'entreprise ou d'une modélisation des menaces ;</li>
+<li><strong>Automatisation et échelle</strong>. Les programmes SecApp matures essaient d'automatiser autant que possible leurs livrables, en utilisant des scripts pour émuler des tests d'intrusion complexes, des outils d'analyse de code statique directement disponibles pour les équipes de développement, en aidant les équipes de développement à créer des tests unitaires et d'intégration de sécurité, et plus encore.</li>
+<li><strong>Culture</strong>. Les programmes SecApp matures essaient de supprimer les conceptions non sécurisées et d'éliminer la dette technique du code existant en faisant partie de l'équipe de développement et non à côté. Les équipes SecApp qui voient les équipes de développement comme "nous" et "eux" sont vouées à l'échec.</li>
+<li><strong>Amélioration continue</strong>. Les programmes SecApp matures cherchent à s'améliorer constamment. Si quelque chose ne fonctionne pas, arrêtez de le faire. Si quelque chose est poussif ou non évolutif, travaillez pour l'améliorer. Si quelque chose n'est pas utilisé par les équipes de développement et n'a pas ou peu d'impact, faites quelque chose de différent. Ce n'est pas parce que nous avons fait des tests comme des contrôles administratifs depuis les années 1970 que c'est une bonne idée. Mesurez, évaluez, puis construisez ou améliorez.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Copyright 2021 - OWASP Top 10 team - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

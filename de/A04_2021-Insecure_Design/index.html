@@ -1,0 +1,1035 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OWASP Top 10:2021">
+      
+      
+      
+      
+        <link rel="prev" href="../A03_2021-Injection/">
+      
+      
+        <link rel="next" href="../A05_2021-Security_Misconfiguration/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>A04:2021 – Unsicheres Anwendungsdesign - OWASP Top 10:2021</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a042021-unsicheres-anwendungsdesign" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="OWASP Top 10:2021" class="md-header__button md-logo" aria-label="OWASP Top 10:2021" data-md-component="logo">
+      
+  <img src="../../assets/OWASP_Logo_Transp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OWASP Top 10:2021
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              A04:2021 – Unsicheres Anwendungsdesign
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/OWASP/Top10" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OWASP/Top10
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="OWASP Top 10:2021" class="md-nav__button md-logo" aria-label="OWASP Top 10:2021" data-md-component="logo">
+      
+  <img src="../../assets/OWASP_Logo_Transp.png" alt="logo">
+
+    </a>
+    OWASP Top 10:2021
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/OWASP/Top10" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OWASP/Top10
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Startseite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x00-notice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anmerkung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Einführung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021_How_to_use_the_OWASP_Top_10_as_a_standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wie man die OWASP Top 10 als Standard verwendet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021-How_to_start_an_AppSec_program_with_the_OWASP_Top_10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wie man ein AppSec-Program mit der OWASP Top 10 beginnt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00-about-owasp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Über OWASP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Liste der Top 10:2021
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Liste der Top 10:2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A01_2021-Broken_Access_Control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A01 - Mangelhafte Zugriffskontrolle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A02_2021-Cryptographic_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A02 - Fehlerhafter Einsatz von Kryptographie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A03_2021-Injection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A03 - Injection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    A04 - Unsicheres Anwendungsdesign
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    A04 - Unsicheres Anwendungsdesign
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#beurteilungskriterien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beurteilungskriterien
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      Übersicht
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beschreibung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beschreibung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anforderungs-und-ressourcenmanagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anforderungs- und Ressourcenmanagement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sicheres-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sicheres Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sicherer-entwicklungslebenszyklus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sicherer Entwicklungslebenszyklus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pravention-und-gegenmanahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prävention und Gegenmaßnahmen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beispielhafte-angriffsszenarien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispielhafte Angriffsszenarien
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referenzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referenzen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liste-der-zugeordneten-cwes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liste der zugeordneten CWEs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A05_2021-Security_Misconfiguration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A05 - Sicherheitsrelevante Fehlkonfiguration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A06_2021-Vulnerable_and_Outdated_Components/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A06 - Unsichere oder veraltete Komponenten
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A07_2021-Identification_and_Authentication_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A07 - Fehlerhafte Authentifizierung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A08_2021-Software_and_Data_Integrity_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A08 - Fehlerhafte Prüfung der Software- und Datenintegrität
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A09_2021-Security_Logging_and_Monitoring_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A09 - Unzureichendes Logging und Sicherheitsmonitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A10_2021-Server-Side_Request_Forgery_%28SSRF%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A10 - Server-Side Request Forgery (SSRF)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A11_2021-Next_Steps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nächste Schritte
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#beurteilungskriterien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beurteilungskriterien
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      Übersicht
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beschreibung
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Beschreibung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anforderungs-und-ressourcenmanagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anforderungs- und Ressourcenmanagement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sicheres-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sicheres Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sicherer-entwicklungslebenszyklus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sicherer Entwicklungslebenszyklus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pravention-und-gegenmanahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prävention und Gegenmaßnahmen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beispielhafte-angriffsszenarien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispielhafte Angriffsszenarien
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referenzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referenzen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liste-der-zugeordneten-cwes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liste der zugeordneten CWEs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="a042021-unsicheres-anwendungsdesign">A04:2021 – Unsicheres Anwendungsdesign <img align="right" alt="icon" src="../assets/TOP_10_Icons_Final_Insecure_Design.png" style="height:80px;width:80px" /> <a id="osib.owasp.top10.2021-1-0.4"></a></h1>
+<h2 id="beurteilungskriterien">Beurteilungskriterien <a id="osib.owasp.top10.2021-1-0.4.factors"></a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Zugeordnete CWEs</th>
+<th style="text-align: center;">Maximale Häufigkeit</th>
+<th style="text-align: center;">Durchschn. Häufigkeit</th>
+<th style="text-align: center;">Durchschn. Ausnutzbarkeit (gewichtet)</th>
+<th style="text-align: center;">Durchschn. Auswirkungen (gewichtet)</th>
+<th style="text-align: center;">Maximale Abdeckung</th>
+<th style="text-align: center;">Durchschnittliche Abdeckung</th>
+<th style="text-align: center;">Gesamtanzahl</th>
+<th style="text-align: center;">CVEs insgesamt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">24.19 %</td>
+<td style="text-align: center;">3.00 %</td>
+<td style="text-align: center;">6.46</td>
+<td style="text-align: center;">6.78</td>
+<td style="text-align: center;">77.25 %</td>
+<td style="text-align: center;">42.51 %</td>
+<td style="text-align: center;">262,407</td>
+<td style="text-align: center;">2,691</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ubersicht">Übersicht <a id="osib.owasp.top10.2021-1-0.4.overview"></a></h2>
+<p>Eine der neuen Kategorie für 2021 konzentriert sich auf Risiken im Zusammenhang mit Design- und Architekturfehlern und fordert einen stärkeren Einsatz von Bedrohungsmodellierung, sicheren Design Pattern und Referenzarchitekturen. Als Community sollten wir uns nicht nur auf den "Shift-Left"-Ansatz während der Entwicklung fokussieren, sondern auch auf die vorangehenden Aktivitäten, die für die Prinzipien von „Secure by Design“ wesentlich sind. Bemerkenswerte Common Weakness Enumerations (CWEs) sind <em>CWE-209: Generation of Error Message Containing Sensitive Information</em>, <em>CWE-256: Unprotected Storage of Credentials</em>, <em>CWE-501: Trust Boundary Violation</em>, and <em>CWE-522: Insufficiently Protected Credentials</em>.</p>
+<h2 id="beschreibung">Beschreibung <a id="osib.owasp.top10.2021-1-0.4.description"></a></h2>
+<p>Unsicheres Anwendungsdesign ist eine umfassende Kategorie, die verschiedene Schwachstellen umfasst und als „fehlendes oder ineffektives Design von Schutzmechanismen“ beschrieben wird.Unsicheres Anwendungsdesign ist nicht die Ursache für alle anderen Top-10-Risikokategorien. Es gibt einen klaren Unterschied zwischen unsicherem Design und unsicherer Implementierung. Designfehler und Implementierungsfehler unterscheiden sich aus gutem Grund, da sie unterschiedliche Ursachen und Mitigationen erfordern. Ein sicheres Design kann dennoch Implementierungsfehler enthalten, die zu ausnutzbaren Schwachstellen führen. Ein unsicheres Design lässt sich nicht durch eine perfekte Implementierung beheben, da die notwendigen Sicherheitskontrollen von vornherein nicht zur Abwehr bestimmter Angriffe vorgesehen waren. Ein Faktor, der zu einem unsicheren Design beiträgt, ist das Fehlen eines Geschäftsrisikoprofils, das der entwickelten Software oder dem System zugrunde liegt, was dazu führt, dass das erforderliche Maß an Sicherheitsdesign nicht bestimmt wird.</p>
+<h3 id="anforderungs-und-ressourcenmanagement">Anforderungs- und Ressourcenmanagement</h3>
+<p>Erfassen und verhandeln Sie die Anforderungen für eine Anwendung mit den Fachbereichen, einschließlich der Schutzanforderungen in Bezug auf Vertraulichkeit, Integrität, Verfügbarkeit und Authentizität aller Datenbestände sowie der erwarteten Geschäftslogik. Berücksichtigen Sie, wie exponiert Ihre Anwendung sein wird und ob Sie (zusätzlich zur Zugangskontrolle) eine Trennung der Mandanten erforderlich ist. Sammeln Sie die technischen Anforderungen, einschließlich funktionaler und nicht funktionaler Sicherheitsanforderungen. Planen und verhandeln Sie das Budget für alle Design-, Entwicklungs-, Test- und Betriebsaktivitäten, einschließlich der Sicherheitsmaßnahmen.</p>
+<h3 id="sicheres-design">Sicheres Design</h3>
+<p>Sicheres Design ist sowohl eine Denkweise als auch eine Vorgehensweise, die kontinuierlich Bedrohungen analysiert und sicherstellt, dass der Code robust entwickelt und getestet wird, um gegen bekannte Angriffsmethoden gewappnet zu sein. Die Bedrohungsmodellierung sollte in <em>Backlog Refinement</em> Terminen oder vergleichbaren Aktivitäten integriert werden. Dabei sollten Änderungen im Datenfluss, in der Zugriffskontrolle und anderen Sicherheitsmaßnahmen überprüft werden. Identifizieren Sie während der Entwicklung der User Story die richtigen Prozess- und Fehlerzustände und stellen Sie sicher, dass alle verantwortlichen und betroffenen Parteien diese verstehen und ihnen zustimmen. Analysieren Sie Annahmen und Bedingungen für erwartete sowie fehlgeschlagene Prozesse, um sicherzustellen, dass diese weiterhin angemessen und die erwünschten sind. Bestimmen Sie, wie Annahmen überprüft und Bedingungen durchgesetzt werden können, die für das korrekte Verhalten notwendig sind. Dokumentieren Sie die Ergebnisse in der User Story. Nutzen Sie Fehler als Lernchance und schaffen Sie Anreize, um kontinuierliche Verbesserungen zu fördern. Sicheres Design ist kein Add-on oder Werkzeug, das einfach zu einer Software hinzugefügt werden kann.</p>
+<h3 id="sicherer-entwicklungslebenszyklus">Sicherer Entwicklungslebenszyklus</h3>
+<p>Sichere Software erfordert einen sicheren Entwicklungslebenszyklus, dies umfasst sichere Design Pattern, eine bewährte Methodik, sichere Komponenten, geeignete Tools und Bedrohungsmodellierung. Beziehen Sie Ihre Sicherheitsexperten von Beginn eines Softwareprojekts an mit ein bis hin zur gesamten Projektlaufzeit und der Wartung Ihrer Software. Nutzen Sie das <a href="https://owaspsamm.org">OWASP Software Assurance Maturity Model (SAMM)</a>, um Ihre Bestrebungen zur sicheren Softwareentwicklung zu strukturieren.</p>
+<h2 id="pravention-und-gegenmanahmen">Prävention und Gegenmaßnahmen <a id="osib.owasp.top10.2021-1-0.4.how to prevent"></a></h2>
+<ul>
+<li>
+<p>Entwickeln und nutzen Sie einen sicheren Entwicklungslebenszyklus gemeinsam mit AppSec-Experten, um Sicherheits- und Datenschutzkontrollen zu bewerten und zu gestalten.</p>
+</li>
+<li>
+<p>Erstellen und verwenden Sie eine Bibliotheken für sichere Design Pattern oder vorgefertigter Komponenten für zuverlässige Implementierungen.</p>
+</li>
+<li>
+<p>Verwenden Sie Bedrohungsmodellierung für kritische Bereiche wie Authentifizierung, Zugriffskontrolle, Geschäftslogik und kritische Abläufe.</p>
+</li>
+<li>
+<p>Integrieren Sie Sicherheitsvorgaben und -kontrollen in die User Stories.</p>
+</li>
+<li>
+<p>Implementieren Sie Plausibilitätsprüfungen auf allen Ebenen Ihrer Anwendung, vom Frontend bis zum Backend.</p>
+</li>
+<li>
+<p>Schreiben Sie Unit- und Integrationstests, um sicherzustellen, dass alle kritischen Abläufe gegen das Bedrohungsmodell resistent sind. Stellen Sie Anwendungs- <em>und</em> Missbrauchsszenarien für jede Ebene Ihrer Anwendung zusammen.</p>
+</li>
+<li>
+<p>Trennen Sie die Ebenen basierend auf Gefährdungs- und Schutzbedarf auf System- und Netzwerkebene.</p>
+</li>
+<li>
+<p>Stellen Sie sicher, dass die Trennung der Mandanten konsequent auf allen Ebenen erfolgt.</p>
+</li>
+<li>
+<p>Begrenzen Sie den Ressourcenverbrauch pro Benutzer oder Dienst</p>
+</li>
+</ul>
+<h2 id="beispielhafte-angriffsszenarien">Beispielhafte Angriffsszenarien <a id="osib.owasp.top10.2021-1-0.4.example attack scenarios"></a></h2>
+<p><strong>Szenario Nr. 1:</strong> Ein Workflow zur Wiederherstellung von Anmeldeinformationen kann „Fragen und Antworten“ enthalten, was jedoch gemäß NIST 800-63b, dem OWASP ASVS und den OWASP Top 10 nicht zulässig ist. Fragen und Antworten sind als Identitätsnachweis ungeeignet, da mehrere Personen die Antworten kennen können. Aus diesem Grund sind sie unzulässig. Solche Implementierungen sollten entfernt und durch ein sichereres Design ersetzt werden.</p>
+<p><strong>Szenario Nr. 2:</strong> Eine Kinokette bietet Gruppenbuchungsrabatte an und verlangt erst bei mehr als fünfzehn Besuchern eine Anzahlung. Angreifer könnten dieses System ausnutzen, indem sie versuchen, mit wenigen Anfragen sechshundert Sitzplätze in allen Kinos gleichzeitig zu reservieren, was zu erheblichen Einnahmeverlusten führen könnte.</p>
+<p><strong>Szenario Nr. 3:</strong> Die E-Commerce-Website einer Einzelhandelskette ist nicht ausreichend gegen Bots geschützt, die von Händlern betrieben werden, um High-End-Grafikkarten zu erwerben und auf Auktionsseiten weiterzuverkaufen. Dies führt zu negativer Publicity für die Grafikkartenhersteller und die Betreiber der Einzelhandelskette und sorgt für anhaltende Frustration bei Enthusiasten, die diese Karten nicht erwerben können. in sorgfältig gestalteter Anti-Bot-Schutz sowie Automatismen, die z. B. Käufe ablehnen, die innerhalb weniger Sekunden nach Verfügbarkeit getätigt werden, können helfen, unechte Käufe zu identifizieren und solche Transaktionen zu verhindern.</p>
+<h2 id="referenzen">Referenzen <a id="osib.owasp.top10.2021-1-0.4.references"></a></h2>
+<ul>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet">OWASP Cheat Sheet Series: Secure Product Design Cheat Sheet</a> <!-- <a href="https://cheatsheetseries. owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet.html">OWASP Spickzettel: Sicheres Produktdesign</a> --></li>
+<li><a href="https://owaspsamm.org/design/security-architecture">OWASP Software Assurance Maturity Model: OWASP SAMM Security Architecture</a> <!-- <a href="https:/ /owaspsamm.org/model/design/security-architecture/">OWASP SAMM:: Design Security Architecture</a> --></li>
+<li><a href="https://owaspsamm.org/design/threat-assessment">OWASP Software Assurance Maturity Model: OWASP SAMM Threat Assessment</a> <!-- <a href="https:/ /owaspsamm.org/model/design/threat-assessment/">OWASP SAMM:: Design Threat Assessment</a> --></li>
+<li><a href="https://www.nist.gov/publications/guidelines-minimum-standards-developer-verification-software">NIST Publications: Guidelines on Minimum Standards for Developer Verification of Software</a> <!--- <a href="https:/ /www.nist.gov/publications/guidelines-minimum-standards-developer-verification-software">NIST – Guidelines on Minimum Standards for Developer Verification of Software</a> ---></li>
+<li><a href="https://threatmodelingmanifesto.org">The Threat Modeling Manifesto</a> <!--- <a href="https://threatmodelingmanifesto.org">Das Bedrohungsmodellierungsmanifest</a> ---></li>
+<li><a href="https://github.com/hysnsec/awesome-threat-modelling">Awesome Threat Modeling</a> <!---<a href="https://github.com/hysnsec/awesome -Bedrohungsmodellierung">Awesome Threat Modeling</a> ---></li>
+</ul>
+<h2 id="liste-der-zugeordneten-cwes">Liste der zugeordneten CWEs <a id="osib.owasp.top10.2021-1-0.4.mapped cwes"></a></h2>
+<ul>
+<li><a href="https://cwe.mitre.org/data/definitions/73.html">CWE-73: External Control of File Name or Path</a> <!-- <a href="https://cwe.mitre.org/data/definitions/73.html">CWE-73: Externe Kontrolle von Dateinamen oder Pfad</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/183.html">CWE-183: Permissive List of Allowed Inputs</a> <!-- <a href="https://cwe.mitre.org/data/definitions/183.html">CWE-183: Zulässige Liste zulässiger Eingaben</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/209.html">CWE-209: Generation of Error Message Containing Sensitive Information</a> <!-- <a href="https://cwe.mitre.org/data/definitions/209.html">CWE-209: Generierung einer Fehlermeldung mit vertraulichen Informationen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/213.html">CWE-213: Exposure of Sensitive Information Due to Incompatible Policies</a> <!-- <a href="https://cwe.mitre.org/data/definitions/213.html">CWE-213: Offenlegung sensibler Informationen aufgrund inkompatibler Richtlinien</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/235.html">CWE-235: Improper Handling of Extra Parameters</a> <!-- <a href="https://cwe.mitre.org/data/definitions/235.html">CWE-235: Unsachgemäßer Umgang mit zusätzlichen Parametern</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/256.html">CWE-256: Plaintext Storage of a Password</a> <!-- <a href="https://cwe.mitre.org/data/definitions/256.html">CWE-256: Ungeschützte Speicherung von Anmeldeinformationen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/257.html">CWE-257: Storing Passwords in a Recoverable Format</a> <!-- <a href="https://cwe.mitre.org/data/definitions/257.html">CWE-257: Speichern von Passwörtern in einem wiederherstellbaren Format</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/266.html">CWE-266: Incorrect Privilege Assignment</a> <!-- <a href="https://cwe.mitre. org/data/definitions/266.html">CWE-266: Falsche Berechtigungszuweisung</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/269.html">CWE-269: Improper Privilege Management</a> <!-- <a href="https://cwe.mitre.org/data/definitions/269.html">CWE-269: Unsachgemäße Berechtigungsverwaltung</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/280.html">CWE-280: Improper Handling of Insufficient Permissions or Privileges </a> <!-- <a href="https://cwe.mitre.org/data/definitions/280.html">CWE-280: Unsachgemäßer Umgang mit unzureichenden Berechtigungen oder Privilegien</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/311.html">CWE-311: Missing Encryption of Sensitive Data</a> <!-- <a href="https://cwe.mitre.org/data/definitions/311.html">CWE-311: Fehlende Verschlüsselung sensibler Daten</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/312.html">CWE-312: Cleartext Storage of Sensitive Information</a> <!-- <a href="https://cwe.mitre.org/data/definitions/312.html">CWE-312: Klartextspeicherung sensibler Informationen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/313.html">CWE-313: Cleartext Storage in a File or on Disk</a> <!-- <a href="https://cwe.mitre.org/data/definitions/313.html">CWE-313: Klartextspeicherung in einer Datei oder auf der Festplatte</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/316.html">CWE-316: Cleartext Storage of Sensitive Information in Memory</a> <!-- <a href="https://cwe.mitre.org/data/definitions/316.html">CWE-316: Klartextspeicherung sensibler Informationen im Speicher</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/419.html">CWE-419: Unprotected Primary Channel</a> <!-- <a href="https://cwe.mitre.org/data/definitions/419.html">CWE-419: Ungeschützter Primärkanal</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/430.html">CWE-430: Deployment of Wrong Handler</a> <!-- <a href="https://cwe.mitre.org/data/definitions/430.html">CWE-430: Bereitstellung eines falschen Handlers</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/434.html">CWE-434: Unrestricted Upload of File with Dangerous Type</a> <!-- <a href="https://cwe.mitre.org/data/definitions/434.html">CWE-434: Uneingeschränktes Hochladen von Dateien mit gefährlichem Typ</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/444.html">CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')</a> <!-- [CWE-444: Inkonsistente Interpretation von HTTP-Anfragen ('HTTP Request Smuggling')] (https://cwe.mitre.org/data/definitions/444.html) --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/451.html">CWE-451: User Interface (UI) Misrepresentation of Critical Information</a> <!-- <a href="https://cwe.mitre.org/data/definitions/451.html">CWE-451: Falsche Darstellung kritischer Informationen durch die Benutzeroberfläche</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/472.html">CWE-472: External Control of Assumed-Immutable Web Parameter</a> <!-- <a href="https://cwe.mitre.org/data/definitions/472.html">CWE-472: Externe Kontrolle von angenommen-unveränderlichen Webparametern</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/501.html">CWE-501: Trust Boundary Violation</a> <!-- <a href="https://cwe.mitre. org/data/definitions/501.html">CWE-501: Trust Boundary Violation</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/522.html">CWE-522: Insufficiently Protected Credentials</a> <!-- <a href="https://cwe.mitre.org/data/definitions/522.html">CWE-522: Unzureichend geschützte Anmeldeinformationen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/525.html">CWE-525: Use of Web Browser Cache Containing Sensitive Information</a> <!-- <a href="https://cwe.mitre.org/data/definitions/525.html">CWE-525: Verwendung von Webbrowser-Cache mit vertraulichen Informationen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/539.html">CWE-539: Use of Persistent Cookies Containing Sensitive Information</a> <!-- <a href="https://cwe.mitre.org/data/definitions/539.html">CWE-539: Verwendung dauerhafter Cookies mit sensiblen Informationen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/579.html">CWE-579: J2EE Bad Practices: Non-serializable Object Stored in Session</a> <!-- <a href="https://cwe.mitre.org/data/definitions/579.html">CWE-579: J2EE Bad Practices: Nicht serialisierbares Objekt in Sitzung gespeichert</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/598.html">CWE-598: Use of GET Request Method With Sensitive Query Strings</a> <!-- <a href="https://cwe.mitre.org/data/definitions/598.html">CWE-598: Verwendung der GET-Anfragemethode mit sensiblen Abfragezeichenfolgen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/602.html">CWE-602: Client-Side Enforcement of Server-Side Security</a> <!-- <a href="https://cwe.mitre.org/data/definitions/602.html">CWE-602: Clientseitige Durchsetzung serverseitiger Sicherheit</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/642.html">CWE-642: External Control of Critical State Data</a> <!-- <a href="https://cwe.mitre.org/data/definitions/642.html">CWE-642: Externe Kontrolle kritischer Zustandsdaten</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/646.html">CWE-646: Reliance on File Name or Extension of Externally-Supplied File</a> <!-- <a href="https://cwe.mitre.org/data/definitions/646.html">CWE-646: Abhängigkeit vom Dateinamen oder der Erweiterung einer extern bereitgestellten Datei</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/650.html">CWE-650: Trusting HTTP Permission Methods on the Server Side</a> <!-- <a href="https://cwe.mitre.org/data/definitions/650.html">CWE-650: Vertrauenswürdige HTTP-Berechtigungsmethoden auf der Serverseite</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/653.html">CWE-653: Improper Isolation or Compartmentalization</a> <!-- <a href="https://cwe.mitre.org/data/definitions/653.html">CWE-653: Unzureichende Kompartimentierung</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/656.html">CWE-656: Reliance on Security Through Obscurity</a> <!-- <a href="https://cwe.mitre.org/data/definitions/656.html">CWE-656: Vertrauen in Sicherheit durch Unklarheit</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/657.html">CWE-657: Violation of Secure Design Principles</a> <!-- <a href="https://cwe.mitre.org/data/definitions/657.html">CWE-657: Verletzung sicherer Designprinzipien</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/799.html">CWE-799: Improper Control of Interaction Frequency</a> <!-- <a href="https://cwe.mitre.org/data/definitions/799.html">CWE-799: Unsachgemäße Kontrolle der Interaktionshäufigkeit</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/807.html">CWE-807: Reliance on Untrusted Inputs in a Security Decision</a> <!-- <a href="https://cwe.mitre.org/data/definitions/807.html">CWE-807: Abhängigkeit von nicht vertrauenswürdigen Eingaben bei einer Sicherheitsentscheidung</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/840.html">CWE-840: Business Logic Errors (CWE CATEGORY)</a> <!-- <a href="https://cwe.mitre.org/data/definitions/840.html">CWE-840: Geschäftslogikfehler</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/841.html">CWE-841: Improper Enforcement of Behavioral Workflow</a> <!-- <a href="https://cwe.mitre.org/data/definitions/841.html">CWE-841: Unsachgemäße Durchsetzung des Verhaltensworkflows</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/927.html">CWE-927: Use of Implicit Intent for Sensitive Communication</a> <!-- <a href="https://cwe.mitre.org/data/definitions/927.html">CWE-927: Verwendung impliziter Absichten für sensible Kommunikation</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/1021.html">CWE-1021: Improper Restriction of Rendered UI Layers or Frames</a> <!-- <a href="https://cwe.mitre.org/data/definitions/1021.html">CWE-1021: Unsachgemäße Einschränkung gerenderter UI-Ebenen oder Frames</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/1173.html">CWE-1173: Improper Use of Validation Framework</a> <!-- <a href="https://cwe.mitre.org/data/definitions/1173.html">CWE-1173: Unsachgemäße Verwendung des Validierungs-Frameworks</a> --></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Copyright 2021 - OWASP Top 10 team - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

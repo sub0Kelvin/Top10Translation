@@ -1,0 +1,949 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="OWASP Top 10:2021">
+      
+      
+      
+      
+        <link rel="prev" href="../A05_2021-Security_Misconfiguration/">
+      
+      
+        <link rel="next" href="../A07_2021-Identification_and_Authentication_Failures/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>A06:2021 – Unsichere oder veraltete Komponenten - OWASP Top 10:2021</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a062021-unsichere-oder-veraltete-komponenten" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../" title="OWASP Top 10:2021" class="md-header__button md-logo" aria-label="OWASP Top 10:2021" data-md-component="logo">
+      
+  <img src="../../assets/OWASP_Logo_Transp.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OWASP Top 10:2021
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              A06:2021 – Unsichere oder veraltete Komponenten
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/OWASP/Top10" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OWASP/Top10
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../" title="OWASP Top 10:2021" class="md-nav__button md-logo" aria-label="OWASP Top 10:2021" data-md-component="logo">
+      
+  <img src="../../assets/OWASP_Logo_Transp.png" alt="logo">
+
+    </a>
+    OWASP Top 10:2021
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/OWASP/Top10" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    OWASP/Top10
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Startseite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0x00-notice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anmerkung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Einführung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021_How_to_use_the_OWASP_Top_10_as_a_standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wie man die OWASP Top 10 als Standard verwendet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00_2021-How_to_start_an_AppSec_program_with_the_OWASP_Top_10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wie man ein AppSec-Program mit der OWASP Top 10 beginnt
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A00-about-owasp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Über OWASP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Liste der Top 10:2021
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Liste der Top 10:2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A01_2021-Broken_Access_Control/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A01 - Mangelhafte Zugriffskontrolle
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A02_2021-Cryptographic_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A02 - Fehlerhafter Einsatz von Kryptographie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A03_2021-Injection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A03 - Injection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A04_2021-Insecure_Design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A04 - Unsicheres Anwendungsdesign
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A05_2021-Security_Misconfiguration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A05 - Sicherheitsrelevante Fehlkonfiguration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    A06 - Unsichere oder veraltete Komponenten
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    A06 - Unsichere oder veraltete Komponenten
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#beurteilungskriterien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beurteilungskriterien
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      Übersicht
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beschreibung
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pravention-und-gegenmanahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prävention und Gegenmaßnahmen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beispielhafte-angriffsszenarien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispielhafte Angriffsszenarien
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referenzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referenzen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liste-der-zugeordneten-cwes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liste der zugeordneten CWEs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A07_2021-Identification_and_Authentication_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A07 - Fehlerhafte Authentifizierung
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A08_2021-Software_and_Data_Integrity_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A08 - Fehlerhafte Prüfung der Software- und Datenintegrität
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A09_2021-Security_Logging_and_Monitoring_Failures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A09 - Unzureichendes Logging und Sicherheitsmonitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A10_2021-Server-Side_Request_Forgery_%28SSRF%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A10 - Server-Side Request Forgery (SSRF)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../A11_2021-Next_Steps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nächste Schritte
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#beurteilungskriterien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beurteilungskriterien
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      Übersicht
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beschreibung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beschreibung
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pravention-und-gegenmanahmen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prävention und Gegenmaßnahmen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beispielhafte-angriffsszenarien" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispielhafte Angriffsszenarien
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referenzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referenzen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liste-der-zugeordneten-cwes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Liste der zugeordneten CWEs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="a062021-unsichere-oder-veraltete-komponenten">A06:2021 – Unsichere oder veraltete Komponenten <img align="right" alt="icon" src="../assets/TOP_10_Icons_Final_Vulnerable_Outdated_Components.png" style="height:80px;width:80px" /> <a id="osib.owasp.top10.2021-1-0.6"></a></h1>
+<h2 id="beurteilungskriterien">Beurteilungskriterien <a id="osib.owasp.top10.2021-1-0.6.factors"></a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Zugeordnete CWEs</th>
+<th style="text-align: center;">Maximale Häufigkeit</th>
+<th style="text-align: center;">Durchschn. Häufigkeit</th>
+<th style="text-align: center;">Durchschn. Ausnutzbarkeit (gewichtet)</th>
+<th style="text-align: center;">Durchschn. Auswirkungen (gewichtet)</th>
+<th style="text-align: center;">Maximale Abdeckung</th>
+<th style="text-align: center;">Durchschnittliche Abdeckung</th>
+<th style="text-align: center;">Gesamtanzahl</th>
+<th style="text-align: center;">CVEs insgesamt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">27.96 %</td>
+<td style="text-align: center;">8.77 %</td>
+<td style="text-align: center;">5.00</td>
+<td style="text-align: center;">5.00</td>
+<td style="text-align: center;">51.78 %</td>
+<td style="text-align: center;">22.47 %</td>
+<td style="text-align: center;">30,457</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ubersicht">Übersicht <a id="osib.owasp.top10.2021-1-0.6.overview"></a></h2>
+<p>Es belegte Platz 2 in der Top-10-Community-Umfrage, verfügte aber auch über genügend Daten, um es datentechnisch in die Top 10 zu schaffen. 
+Unsichere Komponenten sind ein bekanntes Problem, das wir nur schwer testen und bewerten können. Sie stellen die einzige Kategorie dar, in der den enthaltenen CWEs keine Common Vulnerability and Exposures (CVEs) zugeordnet sind. Daher wird eine standardmäßige Exploit-/Auswirkungsgewichtung von 5,0 verwendet. Bemerkenswerte CWEs sind <em>CWE-1104: Use of Unmaintained Third-Party Components</em> und die beiden CWEs aus den Top 10 2013 und 2017.</p>
+<h2 id="beschreibung">Beschreibung <a id="osib.owasp.top10.2021-1-0.6.description"></a></h2>
+<p>Die Anwendung besitzt möglicherweise Schwachstellen, wenn folgendes zutrifft:</p>
+<ul>
+<li>
+<p>Fehlende Kenntnis über die Versionen aller verwendeten Komponenten der in der Anwendung (sowohl client- als auch serverseitig). Dies beinhaltet sowohl direkte als auch indirekte, verschachtelte Abhängigkeiten.</p>
+</li>
+<li>
+<p>Die verwendete Software besitzt Schwachstellen, wird nicht mehr unterstützt oder ist veraltet. Dies beinhaltet das Betriebssystem, den Web-/Applikationsserver, das Datenbankmanagementsystem (DBMS), Anwendungen, APIs und alle verwendeten Komponenten, Laufzeitumgebungen sowie Bibliotheken.</p>
+</li>
+<li>
+<p>Schwachstellenscans werden nicht regelmäßig durchgeführt und die sicherheitsrelevanten Bulletins der verwendeten Komponenten sind nicht abonniert.</p>
+</li>
+<li>
+<p>Die zugrundeliegende Plattform, die Frameworks und die Abhängigkeiten werden nicht risikobasiert und rechtzeitig repariert oder aktualisiert. Dies geschiet in der Regel in Umgebungen, in denen Patchen eine monatliche oder quartalsweise Tätigkeit ist und einer Änderungskontrolle unterliegt. Dies setzt die Organisation unnötigerweise über Tage oder Monate dem Risiko von Schwachstellen aus, für die schon Patches existieren.</p>
+</li>
+<li>
+<p>Softwareentwickler führen keine Kompatibilitäts-Tests der aktualisierten oder gepatchten Bibliotheken durch.</p>
+</li>
+<li>
+<p>Die Komponenten sind nicht sicher konfiguriert (siehe <a href="../A05_2021-Security_Misconfiguration/">A05:2021-Sicherheitsrelevante Fehlkonfiguration</a>).</p>
+</li>
+</ul>
+<!-- TODO OSIB Link -->
+
+<h2 id="pravention-und-gegenmanahmen">Prävention und Gegenmaßnahmen <a id="osib.owasp.top10.2021-1-0.6.how to prevent"></a></h2>
+<p>Es sollte ein Patch-Management-Prozess vorhanden sein:</p>
+<ul>
+<li>
+<p>Entfernen Sie ungenutzte Abhängigkeiten, unnötige Funktionen, Komponenten, Dateien und Dokumentation.</p>
+</li>
+<li>
+<p>Kontinuierliche Bestandsaufnahme der Versionen sowohl der clientseitigen als auch der serverseitigen Komponenten (z. B. Frameworks, Bibliotheken) und ihrer Abhängigkeiten mithilfe von Tools wie "versions", "OWASP Dependency Check", "retire.js" usw. Überwachen Sie kontinuierlich Quellen wie Common Vulnerability and Exposures (CVE) und die National Vulnerability Database (NVD) für Schwachstellen in den Komponenten. Verwenden Sie Software-Tools zur Analyse der Softwarebestandteile, um den Prozess zu automatisieren. Abonnieren Sie E-Mail-Benachrichtigungen zu Sicherheitslücken im Zusammenhang mit den verwendeten Komponenten.</p>
+</li>
+<li>
+<p>Beziehen Sie Komponenten nur von offiziellen Quellen über sichere Links. Bevorzugen Sie signierte Pakete, um die Wahrscheinlichkeit zu verringern, dass eine modifizierte, bösartige Komponente enthalten ist (siehe <a href="../A08_2021-Software_and_Data_Integrity_Failures/">A08:2021-Fehlerhafte Prüfung der Software- und Datenintegrität</a>).</p>
+</li>
+<li>
+<p>Überwachen Sie Bibliotheken und Komponenten, die nicht gewartet werden oder keine Sicherheitspatches für ältere Versionen erstellen. Wenn das Patchen nicht möglich ist, erwägen Sie die Bereitstellung eines virtuellen Patches zur Überwachung, Erkennung oder zum Schutz vor dem entdeckten Problem.</p>
+</li>
+</ul>
+<p>Jede Organisation muss einen fortlaufenden Plan für die Überwachung, Triage und Anwendung von Updates oder Konfigurationsänderungen während der gesamten Lebensdauer der Anwendung oder des Portfolios sicherstellen.</p>
+<h2 id="beispielhafte-angriffsszenarien">Beispielhafte Angriffsszenarien <a id="osib.owasp.top10.2021-1-0.6.example attack scenarios"></a></h2>
+<p><strong>Szenario Nr. 1:</strong> Komponenten werden normalerweise mit denselben Berechtigungen wie die Anwendung selbst ausgeführt, sodass Fehler in einer Komponente schwerwiegende Auswirkungen haben können. Solche Fehler können zufällig (z. B. ein Programmierfehler) oder absichtlich (z. B. eine Backdoor in einer Komponente) sein. Einige Beispiele für entdeckte ausnutzbare Komponentenschwachstellen sind:</p>
+<ul>
+<li>
+<p>CVE-2017-5638, eine Remote Code Execution Schwachstelle in Struts 2, die Angreifende ermächtigt, beliebigen Code auf dem Server auszuführen, wurde für einige erhebliche Sicherheitsvorfälle verantwortlich gemacht.</p>
+</li>
+<li>
+<p>Obwohl das Patchen von Internet of Things (IoT) Geräten oft nur sehr schwierig oder unmöglich ist,
+kann dies sehr wichtig sein (z. B. für biomedizinische Geräte).</p>
+</li>
+</ul>
+<p>Es existieren automatisierte Tools, die Angreifenden helfen, nicht gepatchte oder falsch konfigurierte Systeme zu finden. Die Shodan IoT-Suchmaschine kann Ihnen beispielsweise dabei helfen, Geräte zu finden, die immer noch für die im April 2014 gepatchte Heartbleed-Sicherheitslücke verwundbar sind.</p>
+<h2 id="referenzen">Referenzen <a id="osib.owasp.top10.2021-1-0.6.references"></a></h2>
+<ul>
+<li><a href="https://github.com/OWASP/ASVS/blob/master/4.0/en/0x10-V1-Architecture.md#4-0-1">OWASP Application Security Verification Standard (ASVS): V1 Architecture, Design and Threat Modeling</a> <!-- <a href="/www-project-application-security-verification-standard">OWASP Application Security Verification Standard: V1 Architektur, Design und Bedrohungsmodellierung</a> --></li>
+<li><a href="https://owasp.org/www-project-dependency-check">OWASP Dependency Check (for Java and .NET libraries)</a> <!--- <a href="/www-project-dependency-check">OWASP-Abhängigkeitsprüfung (für Java- und .NET-Bibliotheken)</a> ---></li>
+<li><a href="https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/10-Map_Application_Architecture">OWASP Web Security Testing Guide: Map Application Architecture</a> <!--- <a href="/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/10-Map_Application_Architecture">OWASP-Testhandbuch – Kartenanwendungsarchitektur (OTG-INFO-010)</a> ---></li>
+<li><a href="https://owasp.org/www-community/Virtual_Patching_Best_Practices">OWASP Community Content: Virtual Patching Best Practices</a> <!--- <a href="/www-community/Virtual_Patching_Best_Practices">OWASP Virtual Patching Best Practices</a> ---></li>
+<li><a href="https://cdn2.hubspot.net/hub/203759/file-1100864196-pdf/docs/Contrast - Insecure_Libraries_2014.pdf">Contrast Security: The Unfortunate Reality of Insecure Libraries</a> <!--- <a href="https://cdn2.hubspot.net/hub/203759/file-1100864196-pdf/docs/Contrast_-_Insecure_Libraries_2014.pdf">Die unglückliche Realität unsicherer Bibliotheken</a> ---></li>
+<li><a href="https://www.cvedetails.com/version-search.php">MITRE Common Vulnerabilities and Exposures (CVE): search by cvedetails</a> <!--- <a href="https://www.cvedetails.com/version-search.php">MITRE Common Vulnerabilities and Exposures (CVE)-Suche</a> ---></li>
+<li><a href="https://nvd.nist.gov/">National Vulnerability Database (NVD)</a> <!--- <a href="https://nvd.nist.gov/">National Vulnerability Database (NVD)</a> ---></li>
+<li><a href="https://github.com/retirejs/retire.js/">Retire.js for detecting known vulnerable JavaScript libraries</a> <!--- <a href="https://github.com/retirejs/retire.js/">Retire.js zur Erkennung bekanntermaßen anfälliger JavaScript-Bibliotheken</a> ---></li>
+<li><a href="https://github.com/advisories">GitHub Advisory Database</a> <!--- <a href="https://github.com/advisories">GitHub Advisory Database</a> ---></li>
+<li><a href="https://rubysec.com/">RubySec: Ruby Libraries Security Advisory Database and Tools</a> <!--- <a href="https://rubysec.com/">Ruby Libraries Security Advisory Database and Tools</a> ---></li>
+<li><a href="https://safecode.org/publication/SAFECode_Software_Integrity_Controls0610.pdf">SAFECode: Software Integrity Controls [PDF]</a> <!--- <a href="https://safecode.org/publication/SAFECode_Software_Integrity_Controls0610.pdf">SAFECode Software Integrity Controls klzzwxh:0060PDF klzzwxh:0061</a> ---></li>
+</ul>
+<h2 id="liste-der-zugeordneten-cwes">Liste der zugeordneten CWEs <a id="osib.owasp.top10.2021-1-0.6.mapped cwes"></a></h2>
+<ul>
+<li><a href="https://cwe.mitre.org/data/definitions/937.html">CWE-937: OWASP Top Ten 2013 Category A9 - Using Components with Known Vulnerabilities (CWE CATEGORY)</a> <!-- <a href="https://cwe.mitre.org/data/definitions/937.html">CWE-937: OWASP Top 10 2013: Verwendung von Komponenten mit bekannten Schwachstellen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/1035.html">CWE-1035: OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities (CWE CATEGORY)</a> <!-- <a href="https://cwe.mitre.org/data/definitions/1035.html">CWE-1035: 2017 Top 10 A9: Verwendung von Komponenten mit bekannten Schwachstellen</a> --></li>
+<li><a href="https://cwe.mitre.org/data/definitions/1104.html">CWE-1104: Use of Unmaintained Third Party Components</a> <!-- <a href="https://cwe.mitre.org/data/definitions/1104.html">CWE-1104: Verwendung nicht gewarteter Drittanbieterkomponenten</a> --></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © Copyright 2021 - OWASP Top 10 team - This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
